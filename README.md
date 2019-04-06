@@ -15,15 +15,15 @@ You can either use the hook or the component itself, pick what better suits your
 
 ### Component
 ```jsx
-import Untabbable from 'react-untabbable/Untabbable';
+import { Untabbable } from 'react-untabbable';
 
 const options = { disabled: false, includeContainer: true };
 
 <Untabbable { ...options } >
-    <div className="container">
-        <h1>All elements inside this container are untabbable!</h1>
+    <div tabIndex="0" className="container">
+        <h1>All elements, including the container, are untabbable!</h1>
         <button>Try to focus me with your keyboard!</button>
-        <button>You can still click me though!</button>
+        <button>You can still focus me though!</button>
     </div>
 </Untabbable>
 ```
@@ -31,7 +31,7 @@ const options = { disabled: false, includeContainer: true };
 ### Hook
 ```jsx
 import React, { useRef } from 'react';
-import useUntabbable from 'react-untabbable/useUntabbable';
+import { useUntabbable } from 'react-untabbable';
 
 const MyComponent = () => {
     const containerRef = useRef();
@@ -44,7 +44,7 @@ const MyComponent = () => {
         <div ref={ containerRef } tabIndex="0" className="container">
             <h1>All elements, including the container, are untabbable!</h1>
             <button>Try to focus me with your keyboard!</button>
-            <button>You can still click me though!</button>
+            <button>You can still focus me though!</button>
         </div>
     )
 };

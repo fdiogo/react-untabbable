@@ -13,7 +13,15 @@ const Untabbable: React.FunctionComponent<Props> = (props) => {
 }
 
 export interface Props {
+    /** 
+     * Disable the component and restore the tabbable behaviour.
+     * This is usually preferable to remove the component from tree
+     * as it would trigger a re-render.
+     */
     disabled?: boolean,
+    /**
+     * If it should also make the container that it wraps untabbable.
+     */
     includeContainer?: boolean,
     children: React.ReactElement,
 }

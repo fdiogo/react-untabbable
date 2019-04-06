@@ -1,14 +1,16 @@
 {
-  "name": "use-tab-skip",
+  "name": "react-untabbable",
   "version": "0.0.0",
   "description": "An extremely simple hook to make a container and all its children untabbable, but still focusable.",
-  "main": "index.js",
+  "source": "src/index.ts",
+  "main": "dist/react-untabbable.js",
   "scripts": {
-    "build": "tsc"
+    "build": "yarn run clean && microbundle build -o dist --sourcemap false --compress false",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fdiogo/use-tab-skip.git"
+    "url": "git+https://github.com/fdiogo/react-untabbable.git"
   },
   "keywords": [
     "react",
@@ -21,13 +23,14 @@
   "author": "Diogo Ferreira",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fdiogo/use-tab-skip/issues"
+    "url": "https://github.com/fdiogo/react-untabbable/issues"
   },
-  "homepage": "https://github.com/fdiogo/use-tab-skip#readme",
+  "homepage": "https://github.com/fdiogo/react-untabbable#readme",
   "devDependencies": {
     "@types/node": "^11.13.0",
     "@types/react": "^16.8.10",
     "@types/tabbable": "^3.1.0",
+    "microbundle": "^0.11.0",
     "typescript": "^3.4.1"
   },
   "dependencies": {

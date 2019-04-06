@@ -8,7 +8,13 @@ type Descriptor = {
 };
 
 type Options = {
-	disabled?: boolean,
+    /** 
+     * Disable the component and restore the tabbable behaviour.
+     */
+    disabled?: boolean,
+    /**
+     * If it should also disable the container received as a ref.
+     */
 	includeContainer?: boolean,
 };
 
