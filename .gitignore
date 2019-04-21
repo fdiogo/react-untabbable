@@ -3,3 +3,4 @@ cache
 yarn-error.log
 index.js
 index.cjs.js
+coverage

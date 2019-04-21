@@ -6,8 +6,9 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn run clean && rollup -c",
-    "test": "jest test",
-    "clean": "rm -f index.js index.cjs.js"
+    "clean": "rm -f index.js index.cjs.js",
+    "test": "jest test --coverage",
+    "test:watch": "jest test --watch"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "babel-jest": "^24.7.1",
     "jest": "^24.7.1",
     "react": "16.8",
+    "react-dom": "16.8",
     "react-testing-library": "^6.1.2",
     "rollup": "^1.10.1",
     "rollup-plugin-babel": "^4.3.2",

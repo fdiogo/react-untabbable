@@ -33,10 +33,6 @@ function setElementUntabbable(element: HTMLElement) {
 function restoreTabbable(descriptor: Descriptor) {
     const { element, hadTabindex, tabindex } = descriptor;
 
-    if (!element) {
-        return;
-    }
-
     if (!hadTabindex) {
         element.removeAttribute('tabindex');
     } else {
@@ -45,7 +41,7 @@ function restoreTabbable(descriptor: Descriptor) {
 }
 
 function useUntabbable(ref: React.RefObject<HTMLElement>, options: Options = {} ) {
-    const { disabled = false, includeContainer = true } = options;
+    const { disabled = false, includeContainer = false } = options;
 
     useEffect(() => {
         if (disabled || !ref.current) {
