@@ -1,4 +1,2 @@
-import useUntabbable from './useUntabbable';
-import Untabbable from './Untabbable';
-
-export default { useUntabbable, Untabbable };
+export { default, default as useUntabbable } from './useUntabbable';
+export { default as Untabbable } from './Untabbable';

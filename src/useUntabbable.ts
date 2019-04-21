@@ -1,4 +1,4 @@
-const tabbable = require("tabbable");
+import tabbable from "tabbable";
 import { useEffect } from "react";
 
 type Descriptor = {
@@ -48,7 +48,7 @@ function useUntabbable(ref: React.RefObject<HTMLElement>, options: Options = {} 
     const { disabled = false, includeContainer = true } = options;
 
     useEffect(() => {
-        if (disabled) {
+        if (disabled || !ref.current) {
             return;
         }
 
