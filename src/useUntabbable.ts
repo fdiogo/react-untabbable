@@ -1,24 +1,8 @@
 import tabbable from "tabbable";
+import { Descriptor, Options } from './untabbable';
 import { useEffect } from "react";
 
-type Descriptor = {
-	element: HTMLElement;
-	hadTabindex: boolean;
-	tabindex: string | null;
-};
-
-type Options = {
-    /** 
-     * Disable the component and restore the tabbable behaviour.
-     */
-    disabled?: boolean,
-    /**
-     * If it should also disable the container received as a ref.
-     */
-	includeContainer?: boolean,
-};
-
-function createDescriptor(element: HTMLElement) : Descriptor {
+function createDescriptor(element: HTMLElement): Descriptor {
     return {
         element,
         hadTabindex: element.hasAttribute('tabindex'),
@@ -40,7 +24,7 @@ function restoreTabbable(descriptor: Descriptor) {
     }
 }
 
-function useUntabbable(ref: React.RefObject<HTMLElement>, options: Options = {} ) {
+function useUntabbable(ref: React.RefObject<HTMLElement>, options: Options = {}) {
     const { disabled = false, includeContainer = false } = options;
 
     useEffect(() => {
