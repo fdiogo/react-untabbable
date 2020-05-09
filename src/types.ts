@@ -1,10 +1,10 @@
 export interface Options {
     /** 
-     * Disable the component and restore the tabbable behaviour.
+     * Restores the tabbable behaviour.
      */
     disabled?: boolean,
     /**
-     * If it should also disable the container and not just it\'s children.
+     * If it should also disable the container and not just its children.
      */
 	includeContainer?: boolean,
 };

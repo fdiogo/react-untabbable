@@ -2,20 +2,10 @@ import tabbable from "tabbable";
 import { useEffect } from "react";
 
 import type { RefObject } from 'react';
-
-interface Options {
-    /** 
-     * Restore the tabbable behaviour.
-     */
-    disabled?: boolean,
-    /**
-     * If it should also disable the container received as a ref.
-     */
-	includeContainer?: boolean,
-};
+import type { Options } from "./types";
 
 function useUntabbable(ref: RefObject<HTMLElement> | RefObject<HTMLElement>[], options: Options = {}) {
-    const { disabled = false, includeContainer = false } = options;
+    const { disabled = false, includeContainer = true } = options;
 
     const refs = Array.isArray(ref) ? ref : [ref];
 
