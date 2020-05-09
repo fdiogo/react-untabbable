@@ -1,7 +1,6 @@
 import typescript from 'rollup-plugin-typescript';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
 import { sizeSnapshot } from "rollup-plugin-size-snapshot";
 
 export default {
@@ -27,11 +26,8 @@ export default {
     plugins: [
         resolve(),
         commonjs(),
-        typescript(),
         sizeSnapshot(),
-        babel({
-            exclude: 'node_modules/**',
-        })
+        typescript()
     ],
     external: ['react'],
 }

@@ -21,7 +21,7 @@ describe('Untabbable', () => {
     it('should set the focusable children with tabindex=-1', () => {
         const { container, getByText } = render(
             <Untabbable>
-                <div>
+                <div tabIndex="0">
                     <button>First</button>
                     <button>Second</button>
                 </div>
@@ -31,7 +31,7 @@ describe('Untabbable', () => {
         const firstButton = getByText('First');
         const secondButton = getByText('Second');
 
-        expect(container.firstChild.getAttribute("tabindex")).not.toBe("-1");
+        expect(container.firstChild.getAttribute("tabindex")).toBe("-1");
         expect(firstButton.getAttribute("tabindex")).toBe("-1");
         expect(secondButton.getAttribute("tabindex")).toBe("-1");
         expect(container.firstChild).toMatchSnapshot();
@@ -40,10 +40,10 @@ describe('Untabbable', () => {
     it('should work with multiple children', () => {
         const { container, getByText } = render(
             <Untabbable>
-                <div>
+                <div tabIndex="0">
                     <button>First</button>
                 </div>
-                <div>
+                <div tabIndex="0">
                     <button>Second</button>
                 </div>
             </Untabbable>
@@ -55,17 +55,17 @@ describe('Untabbable', () => {
         const firstDiv = container.children.item(0);
         const secondDiv = container.children.item(1);
 
-        expect(firstDiv.getAttribute("tabindex")).not.toBe("-1");
+        expect(firstDiv.getAttribute("tabindex")).toBe("-1");
         expect(firstButton.getAttribute("tabindex")).toBe("-1");
 
-        expect(secondDiv.getAttribute("tabindex")).not.toBe("-1");
+        expect(secondDiv.getAttribute("tabindex")).toBe("-1");
         expect(secondButton.getAttribute("tabindex")).toBe("-1");
     });
 
     it('should restore the previous tabindex when disabled', () => {
         const { container, getByText } = render(
             <Untabbable>
-                <div>
+                <div tabIndex="0">
                     <button tabIndex="2">First</button>
                     <button>Second</button>
                 </div>
@@ -80,7 +80,7 @@ describe('Untabbable', () => {
 
         render(
             <Untabbable disabled>
-                <div>
+                <div tabIndex="0">
                     <button tabIndex="2">First</button>
                     <button>Second</button>
                 </div>
@@ -95,7 +95,7 @@ describe('Untabbable', () => {
     it('should also disable the container when `includeContainer` is true', () => {
         const { container, getByText } = render(
             <Untabbable includeContainer>
-                <div>
+                <div tabIndex="0">
                     <button>First</button>
                     <button>Second</button>
                 </div>
@@ -114,10 +114,10 @@ describe('Untabbable', () => {
     it('should treat all direct children as containers', () => {
         const { container, getByText } = render(
             <Untabbable includeContainer>
-                <div>
+                <div tabIndex="0">
                     <button>First</button>
                 </div>
-                <div>
+                <div tabIndex="0">
                     <button>Second</button>
                 </div>
             </Untabbable>
@@ -141,11 +141,11 @@ describe('Untabbable', () => {
     it('should not only support elements but also any type of node', () => {
         const { container, getByText } = render(
             <Untabbable includeContainer>
-                <div>
+                <div tabIndex="0">
                     <button>First</button>
                 </div>
                 Hello!
-                <div>
+                <div tabIndex="0">
                     <button>Second</button>
                 </div>
                 {1}
@@ -172,7 +172,7 @@ describe('Untabbable', () => {
     it('should not alter the tabindex when `disabled` is true', () => {
         const { container, getByText } = render(
             <Untabbable disabled>
-                <div>
+                <div tabIndex="0">
                     <button>First</button>
                     <button>Second</button>
                 </div>
