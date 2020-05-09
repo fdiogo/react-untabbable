@@ -35,12 +35,12 @@ import { Untabbable } from 'react-untabbable';
 
 ### Hook
 
-| Parameter                | Type          | Default | Description                                       |
-|--------------------------|---------------|---------|---------------------------------------------------|
-| ref                      | `ref | ref[]` |         | One or more refs to DOM elements                  |
-| options?                 | `object`      | `{}`    |                                                   |
-| options.disabled         | `boolean`     | `false` | Restores the tabbable behaviour                   |
-| options.includeContainer | `boolean`     | `true`  | If the owner of the ref should also be untabbable |
+| Parameter                | Type             | Default | Description                                       |
+|--------------------------|------------------|---------|---------------------------------------------------|
+| ref                      | `ref` or `ref[]` |         | One or more refs to DOM elements                  |
+| options?                 | `object`         | `{}`    |                                                   |
+| options.disabled         | `boolean`        | `false` | Restores the tabbable behaviour                   |
+| options.includeContainer | `boolean`        | `true`  | If the owner of the ref should also be untabbable |
 
 
 ```jsx
