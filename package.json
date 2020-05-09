@@ -1,6 +1,6 @@
 {
   "name": "react-untabbable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An extremely simple hook to make a container and all its children untabbable, but still focusable.",
   "source": "src/index.ts",
   "main": "index.js",
