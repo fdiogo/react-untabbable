@@ -1,15 +1,11 @@
 import tabbable from "tabbable";
 import { useEffect } from "react";
 
-type Descriptor = {
-	element: HTMLElement;
-	hadTabindex: boolean;
-	tabindex: string | null;
-};
+import type { RefObject } from 'react';
 
-type Options = {
+interface Options {
     /** 
-     * Disable the component and restore the tabbable behaviour.
+     * Restore the tabbable behaviour.
      */
     disabled?: boolean,
     /**
@@ -18,45 +14,52 @@ type Options = {
 	includeContainer?: boolean,
 };
 
-function createDescriptor(element: HTMLElement) : Descriptor {
-    return {
-        element,
-        hadTabindex: element.hasAttribute('tabindex'),
-        tabindex: element.getAttribute('tabindex'),
-    };
-}
-
-function setElementUntabbable(element: HTMLElement) {
-    element.setAttribute('tabindex', '-1');
-}
-
-function restoreTabbable(descriptor: Descriptor) {
-    const { element, hadTabindex, tabindex } = descriptor;
-
-    if (!hadTabindex) {
-        element.removeAttribute('tabindex');
-    } else {
-        element.setAttribute('tabindex', `${tabindex}`);
-    }
-}
-
-function useUntabbable(ref: React.RefObject<HTMLElement>, options: Options = {} ) {
+function useUntabbable(ref: RefObject<HTMLElement> | RefObject<HTMLElement>[], options: Options = {}) {
     const { disabled = false, includeContainer = false } = options;
 
+    const refs = Array.isArray(ref) ? ref : [ref];
+
     useEffect(() => {
-        if (disabled || !ref.current) {
+        if (disabled || refs.length === 0) {
             return;
         }
 
-        const tabbableElements = tabbable(ref.current, { includeContainer });
-        const descriptors = tabbableElements.map(createDescriptor);
+        const descriptors: { 
+            element: HTMLElement,
+            hadTabIndex: boolean;
+            tabIndex: string | null
+        }[] = [];
 
-        tabbableElements.forEach(setElementUntabbable);
+        for (const ref of refs) {
+            if (!ref || !ref.current) {
+                continue;
+            }
+
+            const tabbableElements = tabbable(ref.current, { includeContainer });
+
+            tabbableElements.forEach(element => {
+                descriptors.push({
+                    element,
+                    hadTabIndex: element.hasAttribute('tabindex'),
+                    tabIndex: element.getAttribute('tabindex'),
+                });
+
+                element.setAttribute('tabindex', '-1')
+            });
+        }
 
         return () => {
-            descriptors.forEach(restoreTabbable);
+            for (const descriptor of descriptors) {
+                const { element, hadTabIndex, tabIndex } = descriptor;
+
+                if (!hadTabIndex) {
+                    element.removeAttribute('tabindex');
+                } else {
+                    element.setAttribute('tabindex', `${tabIndex}`);
+                }
+            }
         };
-    }, [ref, disabled, includeContainer]);
+    }, [...refs, disabled, includeContainer]);
 }
 
 export default useUntabbable;

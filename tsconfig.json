@@ -1,9 +1,15 @@
 {
     "compilerOptions": {
-      "target": "es5",
+      "target": "ESNext",
       "module": "esnext",
       "declaration": true,
       "outDir": "./dist",
-      "strict": true
+      "strict": true,
+      "jsx": "preserve",
+      "esModuleInterop": true,
+      "types": [
+        "jest",
+        "@testing-library/jest-dom"
+      ]
     }
   }
