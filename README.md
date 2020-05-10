@@ -13,9 +13,12 @@ It quite simply applies the value __-1__ to the tabbable elements inside a conta
 * When needed, the previous value for the tabindex is restored to the respective elements
 
 ## How to use
-You can either use the hook or the component itself, pick what better suits your needs. Both have the same API.
+You can either use the hook or the component itself, pick what better suits your needs.
 
 ### Component
+
+The component having more than 1 child and you can mix React elements with simples nodes (string, number, etc..).
+Elements **must** support receiving a ref.
 
 | Prop            | Type      | Default | Description                     |
 |-----------------|-----------|---------|---------------------------------|
@@ -25,10 +28,10 @@ You can either use the hook or the component itself, pick what better suits your
 import { Untabbable } from 'react-untabbable';
 
 <Untabbable>
-    <button>Can't click me 😢</button>
-    You can mix react elements and simple nodes! (string, number, etc...)
+    <button>Can't tab into me 😢</button>
+    You can mix React elements and simple nodes! (string, number, etc...)
     <div>
-        <button>Can't click me as well 😭</button>
+        <button>Can't tab into me as well 😭</button>
     </div>
 </Untabbable>
 ```
@@ -51,12 +54,17 @@ const MyComponent = () => {
     const firstButtonRef = useRef();
     const secondButtonRef = useRef();
 
+    useUntabbable([firstButtonRef, secondButtonRef]);
+
     return (
-        <button ref={firstButtonRef}>
-            Can't click me 😢
-        </button>
         <div>
-            <button ref={secondButtonRef}>Can't click me as well 😭</button>
+            <button ref={firstButtonRef}>
+                Can't tab into me 😢
+            </button>
+            <div ref={secondButtonRef}>
+                <button>Can't tab into me as well 😭</button>
+            </div>
+            <button>Still tabbable 🎉</button>
         </div>
     );
 };
