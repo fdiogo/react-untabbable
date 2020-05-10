@@ -1,3 +1,7 @@
+## 1.0.4 (May 10, 2020)
+
+- Include type definitions on build
+
 ## 1.0.3 (May 10, 2020)
 
 - Fix misleading documentation
