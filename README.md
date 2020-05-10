@@ -1,8 +1,20 @@
 [![npm](https://img.shields.io/npm/v/react-untabbable.svg?color=green&style=flat-square)](https://www.npmjs.com/package/react-untabbable)
 
 # react-untabbable
-An extremely simple utility to make a container and all its children untabbable, but still focusable.
+An extremely simple and tiny (1.2kB) utility to make a container and all its children untabbable, but still focusable.
 This can be useful in achieving a better accessibility for you components, like a menu with nested panels or the dreaded __carousel__ where you probably want some of the items to be untabbable.
+
+## Install
+
+```bash
+yarn add react-untabbable
+```
+
+or
+
+```bash
+npm i react-untabbable
+```
 
 ## How does it work?
 It quite simply applies the value __-1__ to the tabbable elements inside a container, restoring afterwards when needed.
@@ -17,7 +29,7 @@ You can either use the hook or the component itself, pick what better suits your
 
 ### Component
 
-The component having more than 1 child and you can mix React elements with simples nodes (string, number, etc..).
+The component supports having more than 1 child and you can mix React elements with simples nodes (string, number, etc..).
 Elements **must** support receiving a ref.
 
 | Prop            | Type      | Default | Description                     |
@@ -29,7 +41,7 @@ import { Untabbable } from 'react-untabbable';
 
 <Untabbable>
     <button>Can't tab into me 😢</button>
-    You can mix React elements and simple nodes! (string, number, etc...)
+    You can mix React elements with simple nodes! (string, number, etc...)
     <div>
         <button>Can't tab into me as well 😭</button>
     </div>
