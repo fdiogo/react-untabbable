@@ -4,7 +4,6 @@ import { render } from '@testing-library/react';
 import useUntabbable from '../src/useUntabbable';
 
 import type { RefObject } from 'react';
-import type { Options } from '../src/types';
 
 const mockTabbable = jest.fn();
 jest.mock('tabbable', () => (...args: any[]) => {
@@ -14,7 +13,7 @@ jest.mock('tabbable', () => (...args: any[]) => {
 
 interface WrapperProps {
     inlineRef: RefObject<HTMLElement> | RefObject<HTMLElement>[];
-    options?: Options;
+    options?: { disabled?: boolean; includeContainer?: boolean };
 }
 
 const Wrapper: FC<WrapperProps> = (props) => {

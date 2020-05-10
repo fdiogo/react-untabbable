@@ -1,6 +1,7 @@
 node_modules
 cache
 yarn-error.log
-index.js
-index.cjs.js
 coverage
+untabbable.cjs.js
+untabbable.esm.js
+untabbable.d.ts

@@ -6,3 +6,5 @@ yarn-error.log
 tsconfig.json
 src
 test
+coverage
+CHANGELOG.md

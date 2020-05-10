@@ -1,7 +1,3 @@
-type Options = {
-    includeContainer?: boolean;
+declare module 'tabbable' {
+    export default function tabbable(el: Element, options?: { includeContainer?: boolean }): HTMLElement[];
 }
-
-declare function tabbable(el: Element, options?: Options): HTMLElement[];
-
-export default tabbable;

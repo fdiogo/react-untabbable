@@ -1,7 +1,7 @@
 [![npm](https://img.shields.io/npm/v/react-untabbable.svg?color=green&style=flat-square)](https://www.npmjs.com/package/react-untabbable)
 
 # react-untabbable
-An extremely simple and tiny (1.3kB) utility to make a container and all its children untabbable, but still focusable.
+An extremely simple and tiny (1.3kB gzipped) utility to make a container and all its children untabbable, but still focusable.
 This can be useful in achieving a better accessibility for you components, like a menu with nested panels or the dreaded __carousel__ where you probably want some of the items to be untabbable.
 
 ## Install

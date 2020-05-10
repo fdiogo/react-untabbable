@@ -2,12 +2,24 @@ import tabbable from "tabbable";
 import { useEffect } from "react";
 
 import type { RefObject } from 'react';
-import type { Options } from "./types";
 
-function useUntabbable(ref: RefObject<HTMLElement> | RefObject<HTMLElement>[], options: Options = {}) {
+interface useUntabbableOptions {
+    /**
+     * Restores the tabbable behaviour.
+     */
+    disabled?: boolean;
+    /**
+     * If it should also disable the container and not just its children.
+     */
+    includeContainer?: boolean;
+}
+
+function useUntabbable(ref: RefObject<HTMLElement> | RefObject<HTMLElement>[], options: useUntabbableOptions = {}) {
     const { disabled = false, includeContainer = true } = options;
 
     const refs = Array.isArray(ref) ? ref : [ref];
+
+    const deps = ([disabled, includeContainer] as any[]).concat(refs);
 
     useEffect(() => {
         if (disabled || refs.length === 0) {
@@ -49,7 +61,7 @@ function useUntabbable(ref: RefObject<HTMLElement> | RefObject<HTMLElement>[], o
                 }
             }
         };
-    }, [...refs, disabled, includeContainer]);
+    }, deps);
 }
 
 export default useUntabbable;

@@ -2,9 +2,15 @@ import React, { Children, createRef, cloneElement, isValidElement } from 'react'
 import useUntabbable from './useUntabbable';
 
 import type { FC, RefObject } from 'react';
-import type { Options } from './types';
 
-const Untabbable: FC<Pick<Options, 'disabled'>> = (props) => {
+interface UntabbableProps {
+    /**
+     * Restores the tabbable behaviour.
+     */
+    disabled?: boolean;
+}
+
+const Untabbable: FC<UntabbableProps> = (props) => {
     const { children, disabled } = props;
 
     const childrenAsArray = Children.toArray(children);

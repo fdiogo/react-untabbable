@@ -1,13 +1,13 @@
 {
-  "index.cjs.js": {
-    "bundled": 6447,
-    "minified": 3543,
-    "gzipped": 1378
+  "untabbable.cjs.js": {
+    "bundled": 6894,
+    "minified": 3674,
+    "gzipped": 1409
   },
-  "index.js": {
-    "bundled": 6179,
-    "minified": 3325,
-    "gzipped": 1301,
+  "untabbable.esm.js": {
+    "bundled": 6626,
+    "minified": 3456,
+    "gzipped": 1331,
     "treeshaked": {
       "rollup": {
         "code": 14,
